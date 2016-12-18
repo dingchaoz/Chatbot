@@ -13,6 +13,10 @@ Requires Python 2.7 or Python 3
 
 `. venv/bin/activate`
 
+The above step is optional-- by DZ, tried on 12.17.2016
+But for first time run, need to download ntlk corpus data using:
+python -m textblob.download_corpora
+
 ### Install the Python-level dependencies
 
 `pip install -r requirements.txt`

@@ -14,9 +14,8 @@ body {
 
 .chat-box {
   background: linear-gradient(0deg, #1E2C3D 00%, #3E364E 100%);
-  /*margin: 100px auto;*/
- /* max-width: 500px;*/
-  width: 100vw;
+  margin: 100px auto;
+  max-width: 500px;
   height: 650px;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
   /*border : 1px solid #000;*/
@@ -27,9 +26,8 @@ body {
 
 .chat-container {
   position: absolute;
-  /*padding: 20px;*/
-  /*width: 500px;*/
-  width: 100vw;
+  padding: 20px;
+  width: 500px;
   height: 500px;
   overflow: scroll;
   transform: translateX(100%);
@@ -60,7 +58,7 @@ p {
   position: relative;
   clear: both;
   background: #95c2fd;
-  /*padding: 0.5em 1em;*/
+  padding: 0.5em 1em;
   background: linear-gradient(40deg, rgba(255, 255, 255, 0.2) 00%, rgba(255, 255, 255, 0.3) 100%);
   border-radius: 3px;
   box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1);
@@ -109,8 +107,8 @@ p {
 }
 
 .chat-control {
-  /*padding: 1.2em;
-  margin-top: 495px;*/
+  padding: 1.2em;
+  margin-top: 495px;
 }
 
 .chat-input {
@@ -127,15 +125,15 @@ p {
 
 .chat-header {
   background: #fff;
-  /*padding: 0.5em;
-  padding-bottom: .7em;*/
+  padding: 0.5em;
+  padding-bottom: .7em;
   text-align: center;
 }
 
 .chat-header span {
   font-size: 12px;
   position: absolute;
-  /*margin: 47px -50px;*/
+  margin: 47px -50px;
   font-style: italic;
 }
 

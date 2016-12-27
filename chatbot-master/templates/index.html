@@ -21,25 +21,19 @@
     <div class="chat-box">
   <div class="chat-header">
     <div class="user-profile active" data-up='cont1'></div>
-    <span>Leyna Jr</span>
-    <div class="user-profile" data-up='cont2'></div>
-    <span>Nastu</span>
-    <div class="user-profile" data-up='cont3'></div>
-    <span>Lucy</span>
-    <div class="user-profile" data-up='cont4'></div>
-    <span>Goku?</span>
+    <span>Leyna II</span>
   </div>
   <div id='chat' class="chat">
 
     <div class="chat-container active" id='cont1'>
 
       <div class="bubble">
-        <p>Yo, I am Leyna Jr, an AI Chatbot built by Dingchao Zhang</p>
+        <p>Leyna II: Hello! I am Leyna Jr, an AI Chatbot built by Dingchao Zhang</p>
       </div>
-      <span class="datestamp">May 20, 2016, 4:16 PM</span>
+      <!-- <span class="datestamp">May 20, 2016, 4:16 PM</span>
+ -->
 
-
-      <div class="bubble bubble-alt">
+     <!--  <div class="bubble bubble-alt">
         <p>That's cool!</p>
       </div>
       <span class="datestamp  dt-alt">May 20, 2016, 4:17 PM</span>
@@ -49,56 +43,9 @@
     <div class="bubble bubble-alt">
         <p>hey!!!.</p>
       </div>
-      <span class="datestamp  dt-alt">May 20, 2016, 4:22 PM</span>
+      <span class="datestamp  dt-alt">May 20, 2016, 4:22 PM</span> -->
     </div>
 
-    <div class="chat-container" id='cont2'>
-
-      <div class="bubble">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut sapien vitae eros consectetur vehicula lacinia at nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum aliquet elit nec erat rutrum rutrum. Mauris ligula
-          magna, dignissim id tortor eu, aliquet dapibus ipsum</p>
-      </div>
-      <span class="datestamp">May 20, 2016, 4:16 PM</span>
-
-
-      <div class="bubble bubble-alt">
-        <p>Aenean ac magna rutrum, finibus est at, venenatis ipsum. Etiam egestas venenatis semper. Sed a neque sed sem lacinia finibus ac nec nisi.</p>
-      </div>
-      <span class="datestamp  dt-alt">May 20, 2016, 4:17 PM</span>
-
-    </div>
-    <div class="chat-container" id='cont3'>
-      <div class="bubble">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut sapien vitae eros consectetur vehicula lacinia at nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum aliquet elit nec erat rutrum rutrum. Mauris ligula
-          magna, dignissim id tortor eu, aliquet dapibus ipsum</p>
-      </div>
-      <span class="datestamp">May 20, 2016, 4:16 PM</span>
-
-
-      <div class="bubble bubble-alt">
-        <p>Aenean ac magna rutrum, finibus est at, venenatis ipsum. Etiam egestas venenatis semper. Sed a neque sed sem lacinia finibus ac nec nisi.</p>
-      </div>
-      <span class="datestamp  dt-alt">May 20, 2016, 4:17 PM</span>
-
-      </div>
-      <span class="datestamp  dt-alt">May 20, 2016, 4:22 PM</span>
-    </div>
-    <div class="chat-container" id='cont4'>
-      <div class="bubble">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut sapien vitae eros consectetur vehicula lacinia at nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum aliquet elit nec erat rutrum rutrum. Mauris ligula
-          magna, dignissim id tortor eu, aliquet dapibus ipsum</p>
-      </div>
-      <span class="datestamp">May 20, 2016, 4:16 PM</span>
-
-
-      <div class="bubble bubble-alt">
-        <p>Aenean ac magna rutrum, finibus est at, venenatis ipsum. Etiam egestas venenatis semper. Sed a neque sed sem lacinia finibus ac nec nisi.</p>
-      </div>
-      <span class="datestamp  dt-alt">May 20, 2016, 4:17 PM</span>
-
-      </div>
-      <span class="datestamp  dt-alt">May 20, 2016, 4:22 PM</span>
-    </div>
   </div>
  <!--  <div class="chat-control">
     <input class="chat-input" type="text" placeholder="enter your message" />
@@ -131,7 +78,17 @@
                 e.preventDefault();
 
                 var message = $('#messageText').val();
-                $("#cont1").append('<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>');
+                // $("#cont1").append('<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>');
+                // $("#cont1").append('<span class="datestamp">May 20, 2016, 4:22 PM</span>');
+                var html = '<div class = "bubble bubble-alt" style="opacity:1;"><p>' +'Me: '+ message + '</p></div>';
+                           
+                var header = $(document.body).find("#cont1");
+                // var html2 = '<span class="datestamp" style="opacity:1;left: 0px;">May 20, 2016, 4:22 PM</span>'
+                // var html3 = '<span class="datestamp dt-alt" style="opacity:1;">1999, 2016, 4:22 PM</span>'
+                // header.append(['<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>',html2]);
+                header.append(html);
+
+
                 $.ajax({
                     type: "POST",
                     url: "/ask",
@@ -141,7 +98,8 @@
 
                         var answer = response.answer;
                         console.log(answer)
-                        $("#cont1").append('<div class = "bubble bubble-alt" style="opacity:1;"><p>' + answer + '</p></div>');
+                        // $("#cont1").append('<div class = "bubble bubble-alt" style="opacity:1;"><p>' + answer + '</p></div>');
+                        header.append('<div class = "bubble" style="opacity:1;"><p>' +'Leyna II: '+ answer + '</p></div>');
                     },
                     error: function(error) {
                         console.log(error);

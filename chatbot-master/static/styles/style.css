@@ -111,7 +111,9 @@ p {
 
 .chat-control {
   padding: 1.2em;
-  margin-top: 1000px;
+  /*margin-bottom: 100%;*/
+  bottom: 0;
+  position:fixed;
 }
 
 .chat-input {

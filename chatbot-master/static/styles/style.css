@@ -16,7 +16,8 @@ body {
   background: linear-gradient(0deg, #1E2C3D 00%, #3E364E 100%);
   margin: 20px auto;
   max-width: 800px;
-  max-height: 1050px;
+  height: 1250px;
+/*  max-height:850px;*/
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
   border : 1px solid #000;
   overflow: hidden;
@@ -29,8 +30,8 @@ body {
   padding: 20px;
   /*width: 800px;
   height: 800px;*/
-  width:80%;
-  height:80%;
+  width:800px;
+  height:1000px;
   overflow: scroll;
   transform: translateX(100%);
   opacity: 0;

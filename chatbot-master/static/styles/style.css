@@ -1,4 +1,4 @@
-* {
+/*/*/** {
   margin: 0;
   padding: 0;
 }
@@ -14,11 +14,11 @@ body {
 
 .chat-box {
   background: linear-gradient(0deg, #1E2C3D 00%, #3E364E 100%);
-  margin: 100px auto;
-  max-width: 500px;
-  height: 650px;
+  margin: 20px auto;
+  max-width: 800px;
+  max-height: 1050px;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-  /*border : 1px solid #000;*/
+  border : 1px solid #000;
   overflow: hidden;
   position: relative;
   transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
@@ -27,8 +27,10 @@ body {
 .chat-container {
   position: absolute;
   padding: 20px;
-  width: 500px;
-  height: 500px;
+  /*width: 800px;
+  height: 800px;*/
+  width:80%;
+  height:80%;
   overflow: scroll;
   transform: translateX(100%);
   opacity: 0;
@@ -119,6 +121,14 @@ p {
   padding: 0.7em;
 }
 
+.input-group {
+  /*width: 100%;*/
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.3);
+ /* padding: 0.7em;*/
+}
+
 .chat-input:focus {
   border: none;
 }
@@ -150,7 +160,7 @@ p {
   cursor: pointer
 }
 
-.user-profile:nth-child(1) {
+.user-profile:nth-child(5) {
   background-image: url(http://vignette3.wikia.nocookie.net/fairytail/images/0/02/Mugshot_of_Erza.png/revision/latest?cb=20130509171537);
 }
 
@@ -158,7 +168,7 @@ p {
   background-image: url(http://orig15.deviantart.net/8172/f/2016/079/7/2/natsu_xabused_reader_fire_within_the_heart_p1_by_minnibellsnow-d9vv2cy.jpg);
 }
 
-.user-profile:nth-child(5) {
+.user-profile:nth-child(1) {
   background-image: url(http://vignette3.wikia.nocookie.net/fairytail/images/e/e7/Lucy_prof_2.jpg/revision/latest?cb=20111024225521);
 }
 
@@ -169,4 +179,4 @@ p {
 .user-profile.active {
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
-}
+}*/*/*/

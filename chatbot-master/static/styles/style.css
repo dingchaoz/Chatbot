@@ -28,6 +28,7 @@ body {
 .chat-container {
   position: absolute;
   padding: 20px;
+  margin-top: 15%;
   /*width: 500px;
   height: 800px;*/
   width:100%;
@@ -149,6 +150,9 @@ p {
   padding: 0.5em;
   padding-bottom: .7em;
   text-align: center;
+  position:fixed;
+  top: 0;
+  width: 100%;
 }
 
 .chat-header span {

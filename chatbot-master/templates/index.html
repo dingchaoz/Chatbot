@@ -68,6 +68,10 @@
 
    
 
+        <!-- <script>
+        $("#cont1").animate({ scrollTop: $(document).height() }, "fast");
+        // return false;
+        </script> -->
         <script>
         $(function() {
             $('#chatbot-form-btn').click(function(e) {
@@ -89,6 +93,9 @@
                 // header.append(['<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>',html2]);
                 header.append(html);
 
+                var box = document.getElementById('cont1');
+                box.scrollTop = box.scrollHeight;
+
 
                 $.ajax({
                     type: "POST",
@@ -101,6 +108,10 @@
                         console.log(answer)
                         // $("#cont1").append('<div class = "bubble bubble-alt" style="opacity:1;"><p>' + answer + '</p></div>');
                         header.append('<div class = "bubble" style="opacity:1;"><p>' +'Leyna II: '+ answer + '</p></div>');
+
+                        var box = document.getElementById('cont1');
+                        box.scrollTop = box.scrollHeight;
+                        // box.animate({ scrollTop: $(document).height() }, "slow");
                     },
                     error: function(error) {
                         console.log(error);

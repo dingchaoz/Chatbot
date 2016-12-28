@@ -34,7 +34,7 @@ body {
   height: 800px;*/
   width:100%;
   /*height:700px;*/
-  height:90%;
+  height:80%;
   overflow: scroll;
   transform: translateX(100%);
   opacity: 0;

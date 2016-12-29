@@ -118,7 +118,7 @@ Then you must know the secret password:
 <category>
 <pattern>WHAT IS YOUR BOTMASTER * NAME</pattern>
 <template>
-I was created by <bot name="master"/>.
+I was created by Dingchao Zhang<bot name="master"/>.
 </template>
 </category>
 

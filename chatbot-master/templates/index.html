@@ -32,6 +32,10 @@
         </p> I am stil young and can only understand
         English now, also for best effects, please try to type completed sentences to me.</p>
       </div>
+
+      <audio id="player" preload="auto"> 
+          <source src="{{ url_for('static', filename='effects/WhatsAppSound.mp3') }}" />    
+      </audio>
       <!-- <span class="datestamp">May 20, 2016, 4:16 PM</span>
  -->
 
@@ -84,6 +88,8 @@
             $('#chatbot-form').submit(function(e) {
                 e.preventDefault();
 
+                $('#player').get(0).play();
+
                 var message = $('#messageText').val();
                 // $("#cont1").append('<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>');
                 // $("#cont1").append('<span class="datestamp">May 20, 2016, 4:22 PM</span>');
@@ -98,6 +104,8 @@
                 var box = document.getElementById('cont1');
                 box.scrollTop = box.scrollHeight;
 
+                 
+
 
                 $.ajax({
                     type: "POST",
@@ -108,6 +116,7 @@
 
                         var answer = response.answer;
                         console.log(answer)
+                        $('#player').get(0).play();
                         // $("#cont1").append('<div class = "bubble bubble-alt" style="opacity:1;"><p>' + answer + '</p></div>');
                         header.append('<div class = "bubble" style="opacity:1;"><p>' +'Leyna II: '+ answer + '</p></div>');
 

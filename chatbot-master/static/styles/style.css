@@ -12,6 +12,12 @@ body {
   line-height: 2em;
 }
 
+#Leyna {
+    text-align: center;
+    display: inline-block;
+    
+}
+
 .chat-box {
   background: linear-gradient(0deg, #1E2C3D 00%, #3E364E 100%);
   margin: 20px auto;
@@ -154,6 +160,7 @@ p {
   position:fixed;
   top: 0;
   width: 90%;
+  opacity: 1;
 }
 
 .chat-header span {
@@ -161,6 +168,7 @@ p {
   position: absolute;
   margin: 47px -50px;
   font-style: italic;
+  opacity: 1;
 }
 
 .user-profile {

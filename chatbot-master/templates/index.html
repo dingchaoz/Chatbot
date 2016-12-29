@@ -20,15 +20,17 @@
 
     <div class="chat-box">
   <div class="chat-header">
-    <div class="user-profile active" data-up='cont1'></div>
-    <span>Leyna II</span>
+    <div class="user-profile active" data-up='cont1'><div style="text-align: center;">
+    <span id = 'Leyna'></span>
+    </div></div>
+
   </div>
   <div id='chat' class="chat">
 
     <div class="chat-container active" id='cont1'>
 
       <div class="bubble">
-        <p>Leyna II: Hello! I am Leyna II, an AI Chatbot built by <a href="https://github.com/dingchaoz" target="_blank">Dingchao Zhang</a></p>
+        <p>Hello! I am Leyna II, an AI Chatbot built by <a href="https://github.com/dingchaoz" target="_blank">Dingchao Zhang</a></p>
         </p> I am stil young and can only understand
         English now, also for best effects, please try to type completed sentences to me.</p>
       </div>
@@ -89,6 +91,8 @@
                 e.preventDefault();
 
                 $('#player').get(0).play();
+                // $('#Leyna').get(0).play();
+
 
                 var message = $('#messageText').val();
                 // $("#cont1").append('<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>');
@@ -103,6 +107,8 @@
 
                 var box = document.getElementById('cont1');
                 box.scrollTop = box.scrollHeight;
+
+                document.getElementById("Leyna").innerHTML = "Leyna II is thinking";
 
                  
 
@@ -123,6 +129,8 @@
                         var box = document.getElementById('cont1');
                         box.scrollTop = box.scrollHeight;
                         // box.animate({ scrollTop: $(document).height() }, "slow");
+
+                        document.getElementById("Leyna").innerHTML = "Leyna II is listening";
                     },
                     error: function(error) {
                         console.log(error);

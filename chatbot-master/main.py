@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import aiml
 import os
 
+
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -30,6 +32,12 @@ def ask():
 	        bot_response = kernel.respond(message)
 	        # print bot_response
 	        return jsonify({'status':'OK','answer':bot_response})
+	# text_file = open("Output.txt", "a")
+	# mArray = []
+	# mArray.append(message,bot_response)
+	# text_file.write("\n")
+	# text_file.write("\n".join(mArray))
+	# text_file.close()
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -26,12 +26,12 @@ while True:
          print("Google Speech Recognition could not understand audio")
      except sr.RequestError as e:
          print("Could not request results from Google Speech Recognition service; {0}".format(e))
-     print "You said: ", myinput
+     print ("You said: ", myinput)
      if myinput == "exit":
          exit()
      # Get Zoe's response
      zoes_response = kernel.respond(myinput)
-     print "Zoe said: ", zoes_response
+     print ("Zoe said: ", zoes_response)
      engine.setProperty('voice',voices[1].id)
      # have Zoe say the response
      engine.say(zoes_response)

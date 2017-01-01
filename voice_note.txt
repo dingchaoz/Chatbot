@@ -19,5 +19,5 @@ then install speechRecognition
 https://pypi.python.org/pypi/SpeechRecognition/
 pip install SpeechRecognition
 
-the above packages are run in python3.5
+the above packages are run in python3.5 and in python2.7
 to activate that, use source activate py35

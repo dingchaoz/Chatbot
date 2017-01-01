@@ -1,0 +1,23 @@
+how to install espeak:
+brew install espeak
+then we can install python-epseak, just download this folder and then make install
+https://github.com/dingchaoz/python-espeak
+
+how to use espeak in command line:
+espeak -vf3 "hello pal, this is your raspberyr pi speaking, can you hear it?"
+this above is a female voice
+or you can type espeak
+then type anythign wanted to be said in the terminal
+more examples here : http://espeak.sourceforge.net/commands.html
+
+to get python to understand speech:
+need to have pyAudio first
+pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
+
+then install speechRecognition
+
+https://pypi.python.org/pypi/SpeechRecognition/
+pip install SpeechRecognition
+
+the above packages are run in python3.5
+to activate that, use source activate py35

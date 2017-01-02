@@ -21,3 +21,16 @@ pip install SpeechRecognition
 
 the above packages are run in python3.5 and in python2.7
 to activate that, use source activate py35
+
+mac system os comes with a male voice:
+in terminal, type say ‘hello’
+in python, we do, import os, then os.system("say 'hello world'")
+there are a lot of voices to choose from https://gohgarry.wordpress.com/2010/01/16/fun-with-mac-say-command/
+here is how to save mac says to a mp3
+http://stackoverflow.com/questions/16501663/macs-say-command-to-mp3
+
+both of them sounds robotic, including pyttsx, a better version is gtts
+but it is a google api with 50 limits daily
+Google web speech api has a lot of other functions like real time translation
+
+it will save to a mp3 and then you can play use afplay audio.mp3 to play it out in mac terminal

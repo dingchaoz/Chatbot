@@ -32,7 +32,7 @@ class Jarvis(object):
         
         response = kernel.respond(command)
 #        print ("Responded back by machine", response)
-        es.say(response)
+        os.system('say -v Vicki ' + response)
         logger.debug("Responded is: '%s'", response)
         
         # Determine if this is an actionable command.

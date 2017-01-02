@@ -32,6 +32,8 @@ class Jarvis(object):
         
         response = kernel.respond(command)
 #        print ("Responded back by machine", response)
+        if "'" in response:
+            response = response.replace("'","")
         os.system('say -v Vicki ' + response)
         logger.debug("Responded is: '%s'", response)
         

@@ -34,3 +34,5 @@ but it is a google api with 50 limits daily
 Google web speech api has a lot of other functions like real time translation
 
 it will save to a mp3 and then you can play use afplay audio.mp3 to play it out in mac terminal
+
+https://pythonspot.com/en/personal-assistant-jarvis-in-python/

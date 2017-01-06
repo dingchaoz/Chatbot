@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return render_template('index.html')
+    return render_template('index_voice.html')
 
 @app.route("/ask", methods=['POST'])
 def ask():

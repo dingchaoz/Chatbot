@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html >
+  <head>
+   <meta charset="UTF-8">
+    <title>Leyna II ChatBot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/normalize.css') }}">
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class="chat-box">
+  <div class="chat-header">
+    <div class="user-profile active" data-up='cont1'><div style="text-align: center;">
+    <span id = 'Leyna'></span>
+    </div></div>
+
+  </div>
+  <div id='chat' class="chat">
+
+    <div class="chat-container active" id='cont1'>
+
+    <input type="file" accept="audio/*;capture=microphone">
+
+
+      <div class="bubble">
+        <p>Hello! I am Leyna II, an AI Chatbot built by <a href="https://github.com/dingchaoz" target="_blank">Dingchao Zhang</a></p>
+        </p> I am stil young and can only understand
+        English now, also for best effects, please try to type completed sentences to me.</p>
+      </div>
+
+      <audio id="player" preload="auto"> 
+          <source src="{{ url_for('static', filename='effects/WhatsAppSound.mp3') }}" />    
+      </audio>
+      <!-- <span class="datestamp">May 20, 2016, 4:16 PM</span>
+ -->
+
+     <!--  <div class="bubble bubble-alt">
+        <p>That's cool!</p>
+      </div>
+      <span class="datestamp  dt-alt">May 20, 2016, 4:17 PM</span>
+
+    
+
+    <div class="bubble bubble-alt">
+        <p>hey!!!.</p>
+      </div>
+      <span class="datestamp  dt-alt">May 20, 2016, 4:22 PM</span> -->
+    </div>
+
+  </div>
+ <!--  <div class="chat-control">
+    <input class="chat-input" type="text" placeholder="enter your message" />
+  </div> -->
+  <!-- <div class="panel-footer"> -->
+  <div class="chat-control">
+                            <form method="post" id="chatbot-form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter Message" name="messageText" id="messageText" autofocus/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="chatbot-form-btn">SEND <span class="glyphicon glyphicon-send"></span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+   
+
+        <!-- <script>
+        $("#cont1").animate({ scrollTop: $(document).height() }, "fast");
+        // return false;
+        </script> -->
+        <script>
+        $(function() {
+            $('#chatbot-form-btn').click(function(e) {
+                e.preventDefault();
+                $('#chatbot-form').submit();
+            });
+
+            $('#chatbot-form').submit(function(e) {
+                e.preventDefault();
+
+                $('#player').get(0).play();
+                // $('#Leyna').get(0).play();
+
+
+                var message = $('#messageText').val();
+                // $("#cont1").append('<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>');
+                // $("#cont1").append('<span class="datestamp">May 20, 2016, 4:22 PM</span>');
+                var html = '<div class = "bubble bubble-alt" style="opacity:1;"><p>' +'Me: '+ message + '</p></div>';
+                           
+                var header = $(document.body).find("#cont1");
+                // var html2 = '<span class="datestamp" style="opacity:1;left: 0px;">May 20, 2016, 4:22 PM</span>'
+                // var html3 = '<span class="datestamp dt-alt" style="opacity:1;">1999, 2016, 4:22 PM</span>'
+                // header.append(['<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>',html2]);
+                header.append(html);
+
+                var box = document.getElementById('cont1');
+                box.scrollTop = box.scrollHeight;
+
+                document.getElementById("Leyna").innerHTML = "Leyna II is thinking";
+
+                // var data = new FormData();
+                // data.append("data" , message);
+                // var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+                // xhr.open( 'post', "{{ url_for('static', filename='php/saveData.php') }}", true );
+                // xhr.send(data);
+
+                 
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/ask",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#messageText').val('');
+
+                        var answer = response.answer;
+                        console.log(answer)
+                        $('#player').get(0).play();
+                        // $("#cont1").append('<div class = "bubble bubble-alt" style="opacity:1;"><p>' + answer + '</p></div>');
+                        header.append('<div class = "bubble" style="opacity:1;"><p>' +'Leyna II: '+ answer + '</p></div>');
+
+                        var box = document.getElementById('cont1');
+                        box.scrollTop = box.scrollHeight;
+                        // box.animate({ scrollTop: $(document).height() }, "slow");
+
+                        document.getElementById("Leyna").innerHTML = "Leyna II is listening";
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+
+
+
+        </script>
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-89493282-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+
+<!--         <?php
+echo "My first PHP script!";
+?> -->
+        
+        <!-- <?php
+          if(!empty($_POST['data'])){
+          $data = $_POST['data'];
+          $fname = mktime() . ".txt";//generates random name
+
+          $file = fopen("upload/" .$fname, 'w');//creates new file
+          fwrite($file, $data);
+          fclose($file);
+          }
+        ?> -->
+        
+
+        <!--  <script language="javascript"> 
+  
+  function DisplayVisits() 
+ {    
+  // How many visits so far? 
+      var numVisits = GetCookie("numVisits"); 
+      if (numVisits) numVisits = parseInt(numVisits) + 1; 
+      else numVisits = 1; // the value for the new cookie 
+  
+  // Show the number of visits 
+      if (numVisits==1) document.write("This is your first visit."); 
+      else document.write("You have visited this page " + numVisits + " times."); 
+  
+  // Set the cookie to expire 365 days from now 
+      var today = new Date(); 
+      today.setTime(today.getTime() + 365 /*days*/ * 24 /*hours*/ * 60 /*minutes*/ * 60 /*seconds*/ * 1000 /*milliseconds*/); 
+      SetCookie("numVisits", numVisits, today); 
+  } 
+  
+  </script> -->
+<!-- 
+  <script language="javascript">DisplayVisits();</script>  -->
+
+
+
+       <!--  <div class="bubble bubble-alt">
+        <p>hey!!!.</p>
+      </div>
+      <span class="datestamp  dt-alt">May 20, 2016, 4:22 PM</span>
+    </div> -->
+    
+    
+  </body>
+</html>

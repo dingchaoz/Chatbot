@@ -32,7 +32,9 @@ class Jarvis(object):
         
         response = kernel.respond(command)
 #        print ("Responded back by machine", response)
-        es.say(response)
+        if "'" in response:
+            response = response.replace("'","")
+        os.system('say -v Vicki ' + response)
         logger.debug("Responded is: '%s'", response)
         
         # Determine if this is an actionable command.
@@ -60,21 +62,6 @@ if os.path.isfile("bot_brain.brn"):
 else:
     kernel.bootstrap(learnFiles = os.path.abspath("aiml/std-startup.xml"), commands = "load aiml b")
     kernel.saveBrain("bot_brain.brn")
-
-while True:
-    i = input("Enter text (or Enter to quit): ")
-    if not i:
-        break
-print "While loop has exited"
-    
-    with sr.Microphone() as source:
-    print("Say something!")
-    audio = r.listen(source)
-    currentEnvironment = getNewEnvironment(environments)
-    currentTimeOfDay = getTime(timeTicks, timeOfDay)
-    print("You are standing in the {0}. It is {1}.".format(currentEnvironment, currentTimeOfDay))
-    command = input("> ")
-    command()
 
 
 # for testing purposes, we're just using the default API key

@@ -1,0 +1,41 @@
+Many companies are hoping to build chatbots indistinguishable from human ones, 
+and many are claiming to be using NLP and deep learning to make this possible, but
+with all the hypes around sometimes it is difficult to tell fact from fiction.
+
+A taxonomy of models:
+Retrieval based vs Generative models
+Retrieval bases use a repository of predefined responses and some kind of heuristic to
+pick an appropriate response based on input and context. The heuristic could be as a rule-
+based expression match or as complex as an ensemble of machine learning classifier,
+these systems don't generate any new text, they just pick a response from a fixed set.
+Generative models generate new responses from scratch and typically based on deep learning
+technique.
+
+Both approaches have pros and cons, retrieval based model don't make grammatical errors
+but unable to handle unseen cases; generative models is the state of art, but hard to train,
+typically requires huge amounts of training data, and quiet likely to make grammatical 
+mistakes, which can be very costly and may drive away users. That's why most systems dealing
+serious business cases now are using retrieval bases models .
+
+
+Training data:
+https://data.quora.com/First-Quora-Dataset-Release-Question-Pairs
+
+First Quora public dataset release: question pairs
+400,000 lines of potential question duplicate pairs,
+each line contains questions in full text, and a binary value
+indicating whether the line truly is duplicate or not. 
+
+Ubuntu dialog corpus
+https://github.com/rkadlec/ubuntu-ranking-dataset-creator
+1 million conversations
+
+Knolwdge inventory:
+AIML
+
+Context:
+
+State:
+
+Pre-existing frameworks:
+AIML

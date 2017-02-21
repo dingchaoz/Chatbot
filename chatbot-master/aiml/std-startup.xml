@@ -40,6 +40,8 @@
 <learn>aiml/standard/std-that.aiml</learn>
 <learn>aiml/standard/std-turing.aiml</learn>
 <learn>aiml/standard/std-yesno.aiml</learn>
+<learn>aiml/standard/Badanswer.aiml</learn>
+<learn>aiml/standard/learn.aiml</learn>
 <!-- <learn>aiml/roise/animal.aiml</learn>
 <learn>aiml/roise/bot_profile.aiml</learn>
 <learn>aiml/roise/client_profile.aiml</learn>

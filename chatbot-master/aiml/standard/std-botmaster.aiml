@@ -10,6 +10,24 @@
 <meta name="author" content="Dr. Wallace"/>
 <meta name="language" content="en"/>
 
+
+<category>
+<pattern>I AM USING LINEAR REGRESSION</pattern>
+<template>Did you remove multi collinearity</template>  
+</category>
+   
+    <category>
+      <pattern>YES</pattern>
+      <that>Did you remove multi collinearity</that>
+      <template>Nice, how did you do it?</template>
+    </category>
+   
+    <category>
+      <pattern>NO</pattern>
+      <that>Did you remove multi collinearity</that>
+      <template>Ok! why you didn't do that?</template>
+    </category>
+
 <category>
 <pattern>I AM YOUR BOTMASTER</pattern>
 <template>

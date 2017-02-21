@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<aiml version="1.0">
+<category>
+<pattern>Where is State Farm?</pattern>
+<template> It is the best insurance company</template>
+</category>
+</aiml>

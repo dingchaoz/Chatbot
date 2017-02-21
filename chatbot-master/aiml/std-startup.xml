@@ -40,6 +40,30 @@
 <learn>aiml/standard/std-that.aiml</learn>
 <learn>aiml/standard/std-turing.aiml</learn>
 <learn>aiml/standard/std-yesno.aiml</learn>
+<!-- <learn>aiml/roise/animal.aiml</learn>
+<learn>aiml/roise/bot_profile.aiml</learn>
+<learn>aiml/roise/client_profile.aiml</learn>
+<learn>aiml/roise/config.aiml</learn>
+<learn>aiml/roise/date.aiml</learn>
+<learn>aiml/roise/default.aiml</learn>
+<learn>aiml/roise/dialog.aiml</learn>
+<learn>aiml/roise/inappropriate.aiml</learn>
+<learn>aiml/roise/inquiry.aiml</learn>
+<learn>aiml/roise/insults.aiml</learn>
+<learn>aiml/roise/knowledge.aiml</learn>
+<learn>aiml/roise/personality.aiml</learn>
+<learn>aiml/roise/profanity.aiml</learn>
+<learn>aiml/roise/reductions1.aiml</learn>
+<learn>aiml/roise/reductions2.aiml</learn>
+<learn>aiml/roise/reductions_update.aiml</learn>
+<learn>aiml/roise/roman.aiml</learn>
+<learn>aiml/roise/that.aiml</learn>
+<learn>aiml/roise/train.aiml</learn>
+<learn>aiml/roise/udc.aiml</learn>
+<learn>aiml/roise/utilities.aiml</learn>
+<learn>aiml/roise/z_update.aiml</learn> -->
+<!-- <learn>aiml/standard/*.aiml</learn> -->
+<!-- <learn>aiml/roise/*.aiml</learn> -->
 
 
 <!-- Load additional AIML set -->

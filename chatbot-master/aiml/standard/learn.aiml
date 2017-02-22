@@ -1,8 +1,180 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <aiml version="1.0">
+
+
+<category><pattern>WHERE IS NORMAL</pattern><template>It is a city in Illinois</template></category>
+
 <category>
-<pattern>Where is State Farm?</pattern>
-<template> It is the best insurance company</template>
+<pattern>NORMAL * </pattern>
+<template><srai>WHERE IS NORMAL</srai></template>
 </category>
+
+<category>
+   <pattern>_ is a _</pattern>
+   
+   <template>
+      When a <star index = "1"/> is not a <star index = "2"/>?
+   </template>
+   
+</category>
+
+<category>
+   <pattern>WHO IS ALBERT EINSTEIN</pattern>
+   <template>Albert Einstein was a German physicist</template>
+</category>
+
+<category>
+   <pattern>WHO IS ISSAC NEWTON</pattern>
+   <template>Isaac Newton was a English physicist and mathematician</template>
+</category>
+
+<category>
+   <pattern>DO YOU KNOW WHO * IS</pattern>  
+   <template>
+      <srai>WHO IS <star/></srai>
+   </template>
+   
+</category>
+
+<category>
+   <pattern>PCA</pattern>
+   <template>Dimension reduction!</template>
+</category>
+
+<category>
+   <pattern>TSNE</pattern>
+   
+   <template>
+      <srai>PCA</srai>
+   </template>
+   
+</category>
+
+<category>
+   <pattern>_ PCA _ </pattern>
+   
+   <template>
+      Have you tried TSNE too?
+   </template>
+   
+</category>
+
+   <category>
+      <pattern>My project is _</pattern>
+      <template>
+         Tell me what <set name = "projectname"> <star/> is about! </set>
+      </template>  
+   </category>  
+   
+   <category>
+      <pattern>work time </pattern>
+      <template>
+         Hi any update about <get name = "projectname"/>?
+      </template>  
+   </category>  
+   
+      <category>
+      <pattern>I AM USING LINEAR REGRESSION</pattern>
+      <template>Did you remove multi collinearity</template>  
+   </category>
+   
+   <category>
+      <pattern>YES</pattern>
+      <that>Did you remove multi collinearity</that>
+      <template>Nice, how did you do it?</template>
+   </category>
+   
+   <category>
+      <pattern>NO</pattern>
+      <that>Did you remove multi collinearity</that>
+      <template>Ok! why you didn't do that?</template>
+   </category>
+
+   <category>
+      <pattern>LET DISCUSS MODELS</pattern>
+      <template>Yes <set name = "topic">models</set></template>  
+   </category>
+   
+   <topic name = "models">
+      <category>
+         <pattern>i am using pca </pattern>
+         <template>Have you tried tsne too</template>
+      </category>
+      
+      <category>
+         <pattern>What is the process </pattern>
+         <template>Here is a template.</template>
+      </category>
+      
+   </topic>
+   
+   <category>
+<pattern>KNOCK KNOCK</pattern>
+<template>Who is there?</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>WHO IS THERE</that>
+<template><person/> who?</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>* WHO</that>
+<template>Ha ha very funny, <get name="name"/>.</template>
+</category>
+
+<category>
+      <pattern>LET DISCUSS MOVIES</pattern>
+      <template>Yes <set name = "topic">movies</set></template>  
+   </category>
+   
+   <topic name = "movies">
+      <category>
+         <pattern> * </pattern>
+         <template>Watching good movie refreshes our minds.</template>
+      </category>
+      
+      <category>
+         <pattern> I LIKE WATCHING COMEDY! </pattern>
+         <template>I like comedy movies too.</template>
+      </category>
+      
+   </topic>
+
+   <category>
+      <pattern>TEST1</pattern>
+      <template>testing one<think>
+          <set name="xfunc">XTEST2</set>
+      </think></template>
+  </category>
+
+  <category>
+      <pattern>XTEST2</pattern>
+      <template>Success</template>
+  </category>
+
+  <category>
+      <pattern>TEST2</pattern>
+      <template><condition name="xfunc">
+          <li value="xxnull"><srai>XDEFAULT ANSWER</srai></li>
+          <li value="*"><think>
+              <set var="temp"><get name="xfunc"/></set>
+              <set name="xfunc">xxnull</set>
+          </think><srai><get var="temp"/></srai></li>
+          <li><srai>XDEFAULT ANSWER</srai></li>
+      </condition></template>
+  </category>
+
+  <category>
+      <pattern>*</pattern>
+      <template><srai>XDEFAULT ANSWER</srai></template>
+  </category>
+
+  <category>
+      <pattern>XDEFAULT ANSWER</pattern>
+      <template>Bad input</template>
+  </category>
+
 </aiml>

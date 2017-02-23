@@ -10,3 +10,10 @@ https://www.tutorialspoint.com/aiml/aiml_useful_resources.htm
 aiml tutorial points
 http://www.alicebot.org/aiml/aaa/
 aims all files and color codes
+an alternative working method to achieve the function of that tag, very
+complicated:
+http://stackoverflow.com/questions/38646903/pyaiml-does-not-respond-on-that-tag?newreg=08e73466b78d4fb0a83ac6bac7184efa
+a chatbot that has speech recognition skill embedded in a web:
+https://github.com/dingchaoz/chatbot-1
+jarvis
+https://github.com/nihal111/J.A.R.V.I.S

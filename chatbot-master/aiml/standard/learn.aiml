@@ -2,6 +2,8 @@
 <aiml version="1.0">
 
 
+
+
 <category><pattern>WHERE IS NORMAL</pattern><template>It is a city in Illinois</template></category>
 
 <category>

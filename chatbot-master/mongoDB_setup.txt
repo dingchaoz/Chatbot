@@ -1,0 +1,45 @@
+MongoDB installation:
+
+Once downloaded the tgz file, unzip it, move the unzipped folder into a working directory
+Inside it you will find bin folder under which there are excecutable commands, let's add
+them to the $PATH so they can be recognizable in terminal; 
+
+We do that by vi .bash_profile or vi .profile
+Here is my $PATH after edited:
+export PATH="/Users/ejlq/Documents/dingchao/mongodb-osx-x86_64-3.4.2/bin:. /Users/ejlq/torch/install/bin/torch-activate://anaconda/bin:$PATH"
+
+Test the $PATH modification by running mongod --help in terminal
+
+MongoDB is in APGL license, but not available on OS ToolShed at this point, needs to be
+requested
+
+PyMongo installation:
+http://api.mongodb.com/python/current/installation.html
+This above link works for non SF environment.
+
+For SF environment, needs to install pymongo from internal pypi,
+to ensure pip is pointing to internal pypi:
+create file ~/.pip/pip.conf
+then add these lines:
+[global]
+index-url = http://sfnc74dhsda10000l.opr.statefarm.org:8080/pypi/~pypi/simple/
+trusted-host = sfnc74dhsda10000l.opr.statefarm.org
+index = http://sfnc74dhsda10000l.opr.statefarm.org:8080/pypi/~pypi/simple/
+
+Once MongoDB and PyMongo istalled, let's get MongoDB start run
+we can run mongod in terminal, and by default it will use /data/db as the data
+storage directory, and this folder needs to be under root directory directly,
+you will need admin access to create that: sudo mkdir -P data/db
+Also this folder needs to be excutable by the runner, so need to run this
+sudo chown -R $(whoami) /data/db
+
+Or you can point it to a customized folder you can run using 
+mongod --dbpath /directory/../..
+
+If it is successful you shall see this message and it stays there:
+2017-02-28T13:26:24.612-0600 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+2017-02-28T13:26:24.613-0600 I NETWORK  [thread1] waiting for connections on port 27017
+
+Now you can run PyMongo to use the MongoDB we just initiated, see tutorial here:
+http://api.mongodb.com/python/current/tutorial.html
+https://basic-data-science.com/

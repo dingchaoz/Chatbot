@@ -19,10 +19,3 @@ chatbot.train(conversation)
 
 response = chatbot.get_response('Hello')
 print response
-
-
-bot = ChatBot(
-    "Norman",
-    storage_adapter="chatterbot.storage.JsonFileStorageAdapter",
-    database="./database.db"
-)

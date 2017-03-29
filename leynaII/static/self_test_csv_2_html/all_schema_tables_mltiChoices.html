@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            table {
+                border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
+
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="result"></div>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <!-- <script src="d3.min.js?v=3.2.8"></script> -->
+       <!--  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+        <script type="text/javascript"charset="utf-8">
+            d3.text("FDW_TABLE_SCHEMA_NAMES.csv", function(data) {
+                var parsedCSV = d3.csv.parseRows(data);
+
+                var container = d3.select("body")
+                    .append("table")
+
+                    .selectAll("tr")
+                        .data(parsedCSV).enter()
+                        .append("tr")
+
+
+                    .selectAll("td")
+                        .data(function(d) { return d; }).enter()
+                        .append("td")
+                        .text(function(d) { return d; });
+
+                 d3.select("table")
+                        .selectAll("tr")
+                        .append("td")
+                        .append("input")
+                        .attr({
+                                    type: "checkbox",
+                                    class: "shape",
+                                    name: "mode",
+                                    value: function(d, i) {return i;}
+                                })
+                                .on("click", function(d){ return mltiSelect2(d); });
+
+                    // A good function to append multiple selections to input text bar
+                      // function mltiSelect (d) {
+                      //     string = d;
+                      //     if (typeof string === 'object') {
+                      //         for (var n = 0; n < string.length; n++) {
+                      //             if (string[n].checked) {
+                      //                 string = string[n].value;
+                      //                 break;
+                      //             }
+                      //         }
+                      //     }
+                      //     console.log(string)
+                      //     var anchorText = window.parent.document.getElementById('messageText').value;
+                      //     if(anchorText !== '') {
+                      //         anchorText += '\n';
+                      //     }
+                      //     //anchorText += '\n;'
+                      //     //anchorText += string;
+                      //     anchorText = anchorText + '\n' + string + ";";
+                      //     window.parent.document.getElementById('messageText').value = anchorText;
+                      //     return false;
+                      // }
+
+                      function removeElement(element) {
+                            element && element.parentNode && element.parentNode.removeChild(element);
+                      };
+
+                      function mltiSelect2 (d) {
+                        if (d.checked) {
+                          var span = "<span id='" + d.value + "'>" + d.value + "</span>";
+                          document.getElementById("#result").append(span);
+                          console.log(d);
+                          console.log(d.value);
+
+                        } else {
+                          removeElement(document.getElementById("#" + d.value));
+                          console.log(d);
+                          console.log(d.value);
+
+                        }
+
+                      };
+
+                    })
+            
+        </script>
+    </body>
+</html>

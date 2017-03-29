@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html >
+  <head>
+   <meta charset="UTF-8">
+    <title>Leyna II ChatBot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/normalize.css') }}">
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class="chat-box">
+  <div class="chat-header">
+    <div class="user-profile active" data-up='cont1'><div style="text-align: center;">
+    <span id = 'Leyna'></span>
+    </div></div>
+
+  </div>
+  <div id='chat' class="chat">
+
+    <div class="chat-container active" id='cont1'>
+
+      <div class="bubble">
+        <p>Hello! I am Leyna II, an AI Chatbot built by State Farm EDA Data Science team. </p>
+        </p> Are you ready to complete a business use of data (BUD) form?</p>
+      </div>
+
+      <audio id="player" preload="auto">
+          <source src="{{ url_for('static', filename='effects/WhatsAppSound.mp3') }}" />
+      </audio>
+      <!-- <span class="datestamp">May 20, 2016, 4:16 PM</span>
+ -->
+
+     <!--  <div class="bubble bubble-alt">
+        <p>That's cool!</p>
+      </div>
+      <span class="datestamp  dt-alt">May 20, 2016, 4:17 PM</span>
+
+
+
+    <div class="bubble bubble-alt">
+        <p>hey!!!.</p>
+      </div>
+      <span class="datestamp  dt-alt">May 20, 2016, 4:22 PM</span> -->
+    </div>
+
+  </div>
+ <!--  <div class="chat-control">
+    <input class="chat-input" type="text" placeholder="enter your message" />
+  </div> -->
+  <!-- <div class="panel-footer"> -->
+  <div class="chat-control">
+                            <form method="post" id="chatbot-form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter Message" name="messageText" id="messageText" autofocus/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" id="chatbot-form-btn">SEND <span class="glyphicon glyphicon-send"></span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+</div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+        <script>
+        $(function() {
+            $('#chatbot-form-btn').click(function(e) {
+                e.preventDefault();
+                $('#chatbot-form').submit();
+            });
+
+            $('#chatbot-form').submit(function(e) {
+                e.preventDefault();
+
+                $('#player').get(0).play();
+                // $('#Leyna').get(0).play();
+
+
+                var message = $('#messageText').val();
+                var html = '<div class = "bubble bubble-alt" style="opacity:1;"><p>' +'Me: '+ message + '</p></div>';
+                // $("#cont1").append('<div class = "bubble" style="opacity:1;"><p>' + message + '</p></div>');
+                // $("#cont1").append('<span class="datestamp">May 20, 2016, 4:22 PM</span>');
+                
+                           
+                var header = $(document.body).find("#cont1");
+
+                header.append(html);
+
+                var box = document.getElementById('cont1');
+                box.scrollTop = box.scrollHeight;
+
+                document.getElementById("Leyna").innerHTML = "Leyna II is thinking";
+                
+                // Make text bar accept input
+                $("#messageText").prop('readonly',false);
+
+                // Disable previous radio inputs
+                $("input[type=radio]").attr('disabled', true);
+
+                // Disable previous radio inputs in iframe
+                $("input[type=radio]").attr('disabled', true);
+
+                
+                  $.ajax({
+                    type: "POST",
+                    url: "/ask",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#messageText').val('');
+
+                        var answer = response.answer;
+                        console.log(answer)
+
+                        var i = response.i;
+                        console.log(i)
+                        // var message = $('#messageText').val();
+                        // console.log(message)
+                        $('#player').get(0).play();
+                        // Move the cursor to the begining of the input bar so when user enters 
+                        // the response can be sent
+                        $("#messageText").focus();
+                        $("#messageText").get(0).setSelectionRange(0,0);
+                        // $("#cont1").append('<div class = "bubble bubble-alt" style="opacity:1;"><p>' + answer + '</p></div>');
+                        // If the next question is a yes/no choice
+                        // if (i in [1,7,11,17,19]) {
+                        if ([1,7,10,12,13,14,15,16,18,19].indexOf(i) >= 0) {
+                          // Make the text input bar readonly so user has to select
+                          $("#messageText").prop('readonly',true);
+
+                          if ([10,12,13,14,15,16].indexOf(i) >= 0) {
+                            radioInputs = '<input type="radio" name="q2" onclick = "handleClick(this);" value="Yes" > Yes <input type="radio" name="q2" onclick = "handleClick(this);" value="No"> No <input type="radio" name="q2" onclick = "handleClick(this);" value="N/A"> N/A';
+
+                          } else {
+                            radioInputs = '<input type="radio" name="q2" onclick = "handleClick(this);" value="Yes" > Yes <input type="radio" name="q2" onclick = "handleClick(this);" value="No"> No';
+
+                          }
+                          // Show radio input and trigger shown response
+                          // function handleClick is called on click event
+                          
+                          instruction = '<p>Press enter key or send button after selected</p>'
+                          header.append('<div class = "bubble" style="opacity:1;"><p>' +'Leyna II: '+ answer + '</p>' + instruction+ '<br>' + radioInputs + '</div>');
+
+                         } 
+                        else if (i == 6){
+
+                          // Make the text input bar readonly so user has to select
+                          $("#messageText").prop('readonly',true);
+                          iframeHTML = '<iframe src="{{ url_for('static', filename='self_test_csv_2_html/all_schema_tables_mltiChoices.html') }}" height="300" width="700" align="left" allowtransparency="true" style="background: #FFFFFF;"></iframe>'
+                          header.append('<div class = "bubble" style="opacity:1;"><p>' +'Leyna II: '+ answer + '</p>'  + '</div><br>');
+                          header.append(iframeHTML)
+
+                        }
+
+                        else {
+                          header.append('<div class = "bubble" style="opacity:1;"><p>' +'Leyna II: '+ answer + '</p></div>');
+                        }
+                        
+
+                        var box = document.getElementById('cont1');
+                        box.scrollTop = box.scrollHeight;
+                        // box.animate({ scrollTop: $(document).height() }, "slow");
+
+                        document.getElementById("Leyna").innerHTML = "Leyna II is listening";
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+                
+            });
+        });
+
+
+
+        </script>
+        <script>
+          // this is the function to be called when radio button is selected
+          function handleClick(myRadio){
+            // console log testing
+            console.log('selected value:' + myRadio.value);
+            // Display the selection on input bar
+            //document.getElementById("messageText").value=myRadio.value;
+            $('input[name = messageText]').val(myRadio.value);
+            // Foucs the mouth to input bar
+            $("#messageText").focus();
+            // Move the cursor to the begining of the input bar so when user enters 
+            // the response can be sent
+            $("#messageText").get(0).setSelectionRange(0,0);
+ 
+          }
+        </script>
+    
+    
+  </body>
+</html>

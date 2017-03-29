@@ -4,8 +4,10 @@ import os
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
-
-chatbot = ChatBot("Leyna2")
+try:
+	chatbot = ChatBot("Leyna2")
+except:
+	pass
 
 
 app = Flask(__name__)

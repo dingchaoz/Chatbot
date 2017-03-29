@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            table {
+                border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
+
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <!-- <script src="d3.min.js?v=3.2.8"></script> -->
+        <!-- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+ -->
+        <script type="text/javascript"charset="utf-8">
+            d3.text("FDW_TABLE_SCHEMA_NAMES.csv", function(data) {
+                var parsedCSV = d3.csv.parseRows(data);
+
+                var container = d3.select("body")
+                    .append("table")
+
+                    .selectAll("tr")
+                        .data(parsedCSV).enter()
+                        .append("tr")
+
+
+                    .selectAll("td")
+                        .data(function(d) { return d; }).enter()
+                        .append("td")
+                        .text(function(d) { return d; });
+
+                 d3.select("table")
+                        .selectAll("tr")
+                        .append("td")
+                        .append("input")
+                        .attr({
+                                    // type: "radio",
+                                    class: "shape",
+                                    name: "mode",
+                                    value: function(d, i) {return i;},
+                                    type:function(d,i){
+                                        if (i == 0) return "hidden"
+                                            else return "radio" ;
+                                    }
+                                })
+                                .on("click", function(d){ return clickaction(d); });
+
+                    function clickaction(d) {
+                        console.log(d)
+                        window.parent.document.getElementById("messageText").value=d
+                    // Foucs the mouth to input bar
+                    //$("#messageText").focus();
+                    x =  window.parent.document.getElementById("messageText")
+                    console.log(x)
+                    // $(x).focus()
+                    // console.log('success focused')
+                    // $(x).get(0).setSelectionRange(0,0);
+                }
+
+                    })
+            
+        </script>
+<!--         <script type="text/javascript">
+            // Add radio buttons
+            var container = d3.select("table");
+            var rows = container.selectAll("tr");
+            var buttonColumn = rows.append("td");
+            // buttonColumn.append("button")
+            //     .text("select")
+            //     .on("click", function(d){ return clickaction(d); });
+            buttonColumn.append("input")
+                        //.data(parsedCSV).enter()
+                        .attr({
+                            type: "radio",
+                            class: "shape",
+                            name: "mode",
+                            value: function(d, i) {return i;}
+                        })
+                        .on("click", function(d){ return clickaction(d); });
+
+            function clickaction(d) {
+                console.log(d);
+            }
+        </script> -->
+    </body>
+</html>
